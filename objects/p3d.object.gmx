@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>number = 65
+            <string>number = 30
 d3d_set_projection(obj_player.x,obj_player.y -number,500,obj_player.x,obj_player.y - (number-0.1),190-number,0,-65,1) 
 draw_set_alpha(1)
 draw_set_colour(c_white)
