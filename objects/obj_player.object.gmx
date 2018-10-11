@@ -25,7 +25,12 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>friction = 0.3
+            <string>///initialise vars
+spd = 4;
+jspd = 8;
+grav = 1;
+hspd = 0;
+vspd = 0;
 </string>
           </argument>
         </arguments>
@@ -48,76 +53,34 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///GravityThing
-if place_free(x,y+1){
-gravity_direction = 270
-gravity = 0.5
-}
-else {
-gravity_direction = 270
-gravity = 0
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
             <string>///Movement
-keyLeft = keyboard_check(ord("A"))
-keyRight = keyboard_check(ord("D"))
-keyJump = keyboard_check(vk_space);
-hspd = 4
+kLft = keyboard_check(ord("A"))
+kRt = keyboard_check(ord("D"))
+kJmp = keyboard_check(vk_space);
 
-if keyLeft{
-    hspeed = -hspd
-}
-if keyRight{
-    hspeed = hspd
-}
-if keyJump{
-    if not place_free(x,y+1){
-        vspeed=-8
+if place_meeting(x,y+1,brickparent){
+    vspd = 0;
+    if kJmp{
+            vspd= -jspd
     }
+    }
+    else{
+        if vspd &lt;10{
+            vspd+=grav;
+        }
+    }
+
+if (kRt){
+    hspd = spd
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="brickparent">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>move_contact_solid(direction,12)
-vspeed = 0
+else if (kLft){
+    hspd = -spd
+}
+if ((!kRt &amp;&amp; !kLft) || (kRt &amp;&amp; kLft)){
+hspd = 0
+}
+
+colmove()
 </string>
           </argument>
         </arguments>
@@ -164,6 +127,29 @@ vspeed = 0
           <argument>
             <kind>1</kind>
             <string>d3d_start()
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>d3d_draw_block(x, y, 16, x+sprite_width, y+32, -16,sprite_get_texture(sprite_index,image_index),1,1)
 </string>
           </argument>
         </arguments>

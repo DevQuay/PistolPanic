@@ -15,12 +15,18 @@
     <background>background\tex_wall</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\InitGame.gml</script>
+    <script>scripts\colmove.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\obj_inroomfloor</object>
     <object>objects\obj_inroomwall</object>
     <object>objects\obj_player</object>
     <object>objects\p3d</object>
     <object>objects\brickparent</object>
+    <object>objects\obj_initthing</object>
+    <object>objects\obj_camera</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room1</room>
