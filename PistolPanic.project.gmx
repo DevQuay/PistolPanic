@@ -15,6 +15,10 @@
     <background>background\tex_wall</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\InitGame.gml</script>
+    <script>scripts\colmove.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\obj_inroomfloor</object>
     <object>objects\obj_inroomwall</object>
